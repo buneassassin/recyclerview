@@ -6,9 +6,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.BreakIterator;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
+
+    // Constructor para inicializar la lista de datos
 
     private List<String> dataList;
 
@@ -31,6 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String data = dataList.get(position);
         holder.textViewName.setText(data);
+        holder.textViewTelefono.setText(data);
     }
 
     // Retorna el tamaño de la lista
@@ -42,6 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Clase para representar las vistas individuales
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewName;
+        public BreakIterator textViewTelefono;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

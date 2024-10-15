@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -17,21 +18,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Lista de personas para demostrar la lista en RecyclerView
+        List<Perona> p=new ArrayList<Perona>();
 
-        recyclerView = findViewById(R.id.recyclerView);
+        // Añadir personas a la lista
+        p.add(new Perona("Juan", "25"));
+        p.add(new Perona("Ana", "30"));
 
-        // Configurar el layout manager
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        PersonaAdapter adapterpersona=new PersonaAdapter(p);
 
-        // Inicializar la lista de datos
-        dataList = new ArrayList<>();
-        dataList.add("Nombre 1");
-        dataList.add("Nombre 2");
-        dataList.add("Nombre 3");
-        // Añadir más datos a la lista
-
-        // Configurar el adaptador
-        myAdapter = new MyAdapter(dataList);
-        recyclerView.setAdapter(myAdapter);
+        RecyclerView lista=(RecyclerView) findViewById(R.id.recyclerView);
+        lista.setAdapter(adapterpersona);
+        lista.setLayoutManager(new LinearLayoutManager(this));
+        lista.setHasFixedSize(true);
+        
     }
 }

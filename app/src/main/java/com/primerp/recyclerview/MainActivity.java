@@ -18,19 +18,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Lista de personas para demostrar la lista en RecyclerView
-        List<Perona> p=new ArrayList<Perona>();
 
-        // Añadir personas a la lista
-        p.add(new Perona("Juan", "25"));
-        p.add(new Perona("Ana", "30"));
+        // Lista de personas para el RecyclerView
+        List<Perona> personasList = new ArrayList<>();
 
-        PersonaAdapter adapterpersona=new PersonaAdapter(p);
+        // Añadir personas con nombre, teléfono y referencia de imagen
+        personasList.add(new Perona("Juan", "2558786", R.drawable.cat));  // Aquí añades la imagen de Juan
+        personasList.add(new Perona("Ana", "7867687", R.drawable.cat));    // Aquí añades la imagen de Ana
 
-        RecyclerView lista=(RecyclerView) findViewById(R.id.recyclerView);
-        lista.setAdapter(adapterpersona);
-        lista.setLayoutManager(new LinearLayoutManager(this));
-        lista.setHasFixedSize(true);
-        
+        // Crear el adaptador y asignarlo al RecyclerView
+        PersonaAdapter personaAdapter = new PersonaAdapter(personasList);
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setAdapter(personaAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
     }
+
 }

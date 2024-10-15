@@ -50,10 +50,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textViewName;
         public BreakIterator textViewTelefono;
+        Perona per;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.textViewName);
+            textViewTelefono = BreakIterator.getCharacterInstance();
+
+        }
+        public void setData(Perona persona) {
+            per=persona;
+            textViewName.setText(per.getNombre());
+            textViewTelefono.setText(per.getTelefono());
         }
     }
 }
